@@ -101,3 +101,15 @@ CREATE TABLE `t_user_0003`
     `user_out_id` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- 不分库分表
+-- ----------------------------
+DROP TABLE IF EXISTS `t_picture`;
+CREATE TABLE `t_picture`
+(
+    `id`          int(11) NOT NULL AUTO_INCREMENT,
+    `title`     varchar(128) NOT NULL,
+    `url`   varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

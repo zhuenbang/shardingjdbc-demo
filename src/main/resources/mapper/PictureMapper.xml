@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shardingjdbc.demo.mapper.PictureMapper">
+
+
+    <!--图片入库-->
+    <insert id="save"
+            parameterType="com.shardingjdbc.demo.entity.PictureEntity">
+        insert into t_picture(title, url)
+        values (#{title},
+                #{url})
+    </insert>
+</mapper>

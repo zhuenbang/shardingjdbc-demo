@@ -1,18 +1,17 @@
 package com.shardingjdbc.demo;
 
-import com.alibaba.fastjson.JSON;
 import com.shardingjdbc.demo.constant.DbAndTableEnum;
 import com.shardingjdbc.demo.entity.OrderNewInfoEntity;
+import com.shardingjdbc.demo.entity.PictureEntity;
 import com.shardingjdbc.demo.mapper.OrderNewMapper;
+import com.shardingjdbc.demo.mapper.PictureMapper;
 import com.shardingjdbc.demo.sequence.KeyGenerator;
 import com.shardingjdbc.demo.service.OrderNewSerivce;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +29,8 @@ class ShardingjdbcDemoApplicationTests {
     private KeyGenerator keyGenerator;
     @Autowired
     private OrderNewMapper orderNewMapper;
+    @Autowired
+    private PictureMapper pictureMapper;
 
     /**
      * 测试分布式主键生成
@@ -94,6 +95,18 @@ class ShardingjdbcDemoApplicationTests {
         List<OrderNewInfoEntity> list = new ArrayList<>();
         list = orderNewSerivce.queryOrderInfoList(orderInfo);
         System.out.println(list);
+    }
+
+
+    /**
+     * 插入图片测试不分库分表
+     */
+    @Test
+    public void testSavePicture() {
+        PictureEntity pictureEntity = new PictureEntity();
+        pictureEntity.setTitle("title");
+        pictureEntity.setUrl("https://qa-secure.walmartmobile.cn/image/finda/T3-8F.jpg");
+        pictureMapper.save(pictureEntity);
     }
 
 
