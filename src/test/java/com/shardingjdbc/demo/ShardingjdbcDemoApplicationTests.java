@@ -40,7 +40,6 @@ class ShardingjdbcDemoApplicationTests {
         // 支付宝或者微信uid
         String outId = "20881007434917916336963360919773";
         log.info("获取id开始");
-
         String innerUserId = keyGenerator.generateKey(DbAndTableEnum.T_USER, outId);
         log.info("外部id={},innerUserId={}", outId, innerUserId);
         String orderId = keyGenerator.generateKey(DbAndTableEnum.T_NEW_ORDER, innerUserId);
@@ -89,13 +88,14 @@ class ShardingjdbcDemoApplicationTests {
      */
     @Test
     public void testQueryNewOrderList() {
-        String userId = "UD020000012212091737129623700013";
+        String userId = "UD020000012304041725238113700100";
         OrderNewInfoEntity orderInfo = new OrderNewInfoEntity();
         orderInfo.setUserId(userId);
         List<OrderNewInfoEntity> list = new ArrayList<>();
         list = orderNewSerivce.queryOrderInfoList(orderInfo);
         System.out.println(list);
     }
+
 
 
     /**
